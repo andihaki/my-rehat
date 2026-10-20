@@ -1,5 +1,6 @@
 // BUG: wrong element id — 'searchInput' does not exist (actual id is 'search-box')
 const input = document.getElementById("search-box");
+const mainSearch = document.getElementById("main-search");
 const category = document.getElementById("category");
 const cards = document.querySelectorAll(".trail-card");
 const emptyMsg = document.getElementById("trails-no-results");
@@ -26,7 +27,18 @@ function applyFilters() {
   emptyMsg.hidden = shown > 0;
 }
 
-input.addEventListener("input", applyFilters);
+input.addEventListener("input", function () {
+  if (mainSearch) mainSearch.value = input.value;
+  applyFilters();
+});
+
+if (mainSearch) {
+  mainSearch.addEventListener("input", function () {
+    input.value = mainSearch.value;
+    applyFilters();
+  });
+}
+
 category.addEventListener("change", applyFilters);
 
 function formatRM(amount) {
