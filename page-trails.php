@@ -62,6 +62,16 @@ get_header();
     <form id="booking-form">
       <label>Name <input type="text" name="name" required></label>
       <label>Date <input type="date" name="date" required></label>
+      <fieldset class="trails-field-group">
+        <legend>Digital Nomad (required)</legend>
+        <label><input type="radio" name="digital_nomad" value="yes" required> Yes</label>
+        <label><input type="radio" name="digital_nomad" value="no" required> No</label>
+      </fieldset>
+      <fieldset class="trails-field-group">
+        <legend>Duration (required)</legend>
+        <label><input type="radio" name="duration" value="daily" required> Daily</label>
+        <label><input type="radio" name="duration" value="montly" required> Montly</label>
+      </fieldset>
       <p id="trails-total">Total: -</p>
       <button type="submit">Request booking</button>
     </form>
@@ -75,6 +85,11 @@ get_header();
     <a href="#">Contact Us</a>
     <a href="#">PDPA</a>
     <a href="#">Privacy Policy Statement</a>
+    <a href="#">Facebook</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+    <a href="#">YouTube</a>
   </nav>
   <p>&copy; 2026 MyRehat</p>
 </footer>

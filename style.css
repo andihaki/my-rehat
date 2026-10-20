@@ -24,9 +24,15 @@ Text Domain: myrehat-test
 .trails-booking { margin-top: 28px; border-top: 2px solid #eee; padding-top: 18px; }
 .trails-booking form { display: flex; flex-direction: column; gap: 10px; max-width: 420px; }
 .trails-booking input { padding: 9px; font-size: 15px; }
+.trails-booking .trails-field-group { display: flex; flex-wrap: wrap; gap: 14px; border: 0; padding: 0; margin: 0; }
+.trails-booking .trails-field-group legend { padding: 0; margin-bottom: 6px; }
+.trails-booking .trails-field-group input { width: auto; margin-right: 4px; }
 .trails-booking button { padding: 11px; background: #0c6b4f; color: #fff; border: 0; cursor: pointer; }
 #trails-total { font-weight: bold; }
 #trails-confirmation { margin-top: 12px; border: 1px solid #0c6b4f; border-radius: 8px; padding: 12px; background: #eef7f2; }
+#trails-confirmation dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; }
+#trails-confirmation dt { font-weight: bold; }
+#trails-confirmation dd { margin: 0; }
 .trails-footer { background: #222; color: #ccc; padding: 22px 20px; margin-top: 30px; text-align: center; }
 .trails-footer nav { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 10px; }
 .trails-footer a { color: #ccc; }
