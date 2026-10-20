@@ -9,34 +9,284 @@ Text Domain: myrehat-test
 */
 
 /* Trails test page styles */
-.site-header-trails { background: #0c6b4f; color: #fff; padding: 32px 20px; text-align: center; }
-.site-header-trails h1 { font-size: 32px; color: #fff; }
-.site-header-trails #main-search { margin-top: 14px; padding: 10px; font-size: 15px; width: min(420px, 90%); }
-.trails-promo { background: #fff3cd; padding: 12px 20px; text-align: center; }
-.trails-main { max-width: 1000px; margin: 0 auto; padding: 20px; }
-.trails-search-row { display: flex; gap: 10px; margin-bottom: 16px; }
-.trails-search-row input, .trails-search-row select { padding: 10px; font-size: 15px; flex: 1; }
-.trails-cards { display: flex; gap: 14px; }
-.trail-card { border: 1px solid #ddd; border-radius: 8px; padding: 14px; min-width: 320px; background: #fff; }
-.trail-card h3 { font-size: 17px; margin-bottom: 6px; }
-.trail-card .price { font-weight: bold; color: #0c6b4f; }
-#trails-no-results { color: #a00; margin: 12px 0; }
-.trails-booking { margin-top: 28px; border-top: 2px solid #eee; padding-top: 18px; }
-.trails-booking form { display: flex; flex-direction: column; gap: 10px; max-width: 420px; }
-.trails-booking input { padding: 9px; font-size: 15px; }
-.trails-booking .trails-field-group { display: flex; flex-wrap: wrap; gap: 14px; border: 0; padding: 0; margin: 0; }
-.trails-booking .trails-field-group legend { padding: 0; margin-bottom: 6px; }
-.trails-booking .trails-field-group input { width: auto; margin-right: 4px; }
-.trails-booking button { padding: 11px; background: #0c6b4f; color: #fff; border: 0; cursor: pointer; }
-#trails-total { font-weight: bold; }
-#trails-confirmation { margin-top: 12px; border: 1px solid #0c6b4f; border-radius: 8px; padding: 12px; background: #eef7f2; }
-#trails-confirmation dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; }
-#trails-confirmation dt { font-weight: bold; }
-#trails-confirmation dd { margin: 0; }
-.trails-footer { background: #222; color: #ccc; padding: 22px 20px; margin-top: 30px; text-align: center; }
-.trails-footer nav { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 10px; }
-.trails-footer a { color: #ccc; }
-@media (max-width: 600px) {
-  .trails-promo { display: none; }
-  .trails-search-row { flex-direction: column; }
+.trails-contact {
+  position: sticky;
+  top: 30px;
+  z-index: 50;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: fit-content;
+  margin: 0 20px 0 auto;
+  padding: 6px 0
+}
+
+.trails-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 4px 14px rgb(0 0 0 / .22);
+  transition: transform .15s ease, box-shadow .15s ease
+}
+
+.trails-contact-btn:hover,
+.trails-contact-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgb(0 0 0 / .3);
+  color: #fff
+}
+
+.trails-contact-btn svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: currentColor
+}
+
+.trails-contact-whatsapp {
+  background: #25d366
+}
+
+.trails-contact-line {
+  background: #06c755
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .trails-contact-btn {
+    transition: none
+  }
+
+  .trails-contact-btn:hover,
+  .trails-contact-btn:focus-visible {
+    transform: none
+  }
+}
+
+.site-header-trails {
+  background: #0c6b4f;
+  color: #fff;
+  padding: 32px 20px;
+  text-align: center
+}
+
+.site-header-trails h1 {
+  font-size: 32px;
+  color: #fff
+}
+
+.site-header-trails #main-search {
+  margin-top: 14px;
+  padding: 10px;
+  font-size: 15px;
+  width: min(420px, 90%)
+}
+
+.trails-promo {
+  background: #fff3cd;
+  padding: 12px 20px;
+  text-align: center
+}
+
+.trails-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px
+}
+
+.trails-search-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px
+}
+
+.trails-search-row input,
+.trails-search-row select {
+  padding: 10px;
+  font-size: 15px;
+  flex: 1
+}
+
+.trails-cards {
+  display: flex;
+  gap: 14px
+}
+
+.trail-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 14px;
+  min-width: 320px;
+  background: #fff
+}
+
+.trail-card h3 {
+  font-size: 17px;
+  margin-bottom: 6px
+}
+
+.trail-card .price {
+  font-weight: 700;
+  color: #0c6b4f
+}
+
+#trails-no-results {
+  color: #a00;
+  margin: 12px 0
+}
+
+.trails-booking {
+  margin-top: 28px;
+  border-top: 2px solid #eee;
+  padding-top: 18px
+}
+
+.trails-booking form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px
+}
+
+.trails-booking input {
+  padding: 9px;
+  font-size: 15px
+}
+
+.trails-booking .trails-field-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  border: 0;
+  padding: 0;
+  margin: 0
+}
+
+.trails-booking .trails-field-group legend {
+  padding: 0;
+  margin-bottom: 6px
+}
+
+.trails-booking .trails-field-group input {
+  width: auto;
+  margin-right: 4px
+}
+
+.trails-booking button {
+  padding: 11px;
+  background: #0c6b4f;
+  color: #fff;
+  border: 0;
+  cursor: pointer
+}
+
+#trails-total {
+  font-weight: 700
+}
+
+#trails-confirmation {
+  margin-top: 12px;
+  border: 1px solid #0c6b4f;
+  border-radius: 8px;
+  padding: 12px;
+  background: #eef7f2
+}
+
+#trails-confirmation dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  margin: 0
+}
+
+#trails-confirmation dt {
+  font-weight: 700
+}
+
+#trails-confirmation dd {
+  margin: 0
+}
+
+.trails-footer {
+  background: #222;
+  color: #ccc;
+  padding: 22px 20px;
+  margin-top: 30px;
+  text-align: center
+}
+
+.trails-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 10px
+}
+
+.trails-footer a {
+  color: #ccc
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #333;
+  color: #ccc;
+  transition: background .15s ease, color .15s ease, transform .15s ease
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  background: #0c6b4f;
+  color: #fff;
+  transform: translateY(-2px)
+}
+
+.socials svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor
+}
+
+.socials svg [fill="none"] {
+  fill: none
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .socials a {
+    transition: none
+  }
+
+  .socials a:hover,
+  .socials a:focus-visible {
+    transform: none
+  }
+}
+
+@media (max-width:600px) {
+  .trails-promo {
+    display: none
+  }
+
+  .trails-search-row {
+    flex-direction: column
+  }
 }
