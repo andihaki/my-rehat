@@ -25,7 +25,7 @@ get_header();
       <span>LINE</span>
     </a>
   </div>
-  <h1>Hiking Advantures</h1>
+  <h1>Tropic Hiking Trails</h1>
   <p>Find your next trail with MyRehat</p>
   <input id="main-search" type="text" placeholder="Search homepage...">
 </header>
@@ -121,7 +121,7 @@ get_header();
     <a href="https://myrehat.com/privacy-policy-2/">Privacy Policy Statement</a>
   </nav>
   <div>
-    <p>&copy; 2026 MyRehat</p>
+    <p>&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> MyRehat</p>
     <div class="socials">
       <a href="https://www.facebook.com/myrehatdotcom/" target="_blank" rel="noopener noreferrer" aria-label="MyRehat on Facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">

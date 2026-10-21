@@ -96,8 +96,14 @@ function myrehat_test_booking_reply( $wants_json, $ok, $message, $data = array()
 }
 
 // BUG P3: callback expects 2 args but only 1 accepted — $trail_id is always null.
-add_action( 'myrehat_trail_viewed', 'myrehat_test_count_view', 10, 1 );
-function myrehat_test_count_view( $trail_id, $count = 1 ) {
+// BUG P3 fixed: accepted_args must match the callback signature (2), not 1.
+add_action( 'myrehat_trail_viewed', 'myrehat_test_count_view', 10, 2 );
+function myrehat_test_count_view( $trail_id = null, $count = 1 ) {
+    if ( ! $trail_id ) {
+        return;
+    }
+
+    $count = (int) $count;
     $key = 'trail_views_' . $trail_id;
     $total = (int) get_option( $key, 0 );
     update_option( $key, $total + $count );
