@@ -10,15 +10,13 @@ Text Domain: myrehat-test
 
 /* Trails test page styles */
 .trails-contact {
-  position: sticky;
-  top: 30px;
+  position: fixed;
+  top: 22px;
+  right: 0;
   z-index: 50;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  width: fit-content;
-  margin: 0 20px 0 auto;
-  padding: 6px 0
 }
 
 .trails-contact-btn {
@@ -230,7 +228,11 @@ Text Domain: myrehat-test
 }
 
 .trails-footer a {
-  color: #ccc
+  color: #ccc;
+}
+
+.trails-footer a:hover {
+  color: #cc8;
 }
 
 .socials {
@@ -282,10 +284,6 @@ Text Domain: myrehat-test
 }
 
 @media (max-width:600px) {
-  .trails-promo {
-    display: none
-  }
-
   .trails-search-row {
     flex-direction: column
   }
