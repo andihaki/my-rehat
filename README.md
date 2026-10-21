@@ -12,9 +12,9 @@
 
 ![B1 translation](./B1.png)
 
-## B3 translation
+## B3 trail view
 
-![B1 translation](./B1.png)
+![B1 trail view](./B3.png)
 
 ## task 6 Elementor hero section
 
