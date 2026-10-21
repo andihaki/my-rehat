@@ -60,17 +60,7 @@ function updateTotal() {
   trailsTotal.textContent = `Total: ${calculateTotal(picked.value)}`;
 }
 
-function showConfirmation() {
-  const data = new FormData(bookingForm);
-  const duration = data.get("duration");
-  const rows = [
-    ["Name", data.get("name")],
-    ["Date", data.get("date")],
-    ["Digital nomad", data.get("digital_nomad") === "yes" ? "Yes" : "No"],
-    ["Duration", duration === "daily" ? "Daily" : "Monthly"],
-    ["Total", formatRM(calculateTotal(duration))],
-  ];
-
+function renderConfirmation(rows) {
   const list = document.createElement("dl");
   rows.forEach(function (row) {
     const term = document.createElement("dt");
@@ -79,8 +69,27 @@ function showConfirmation() {
     detail.textContent = row[1];
     list.append(term, detail);
   });
-
   trailsConfirmation.replaceChildren(list);
+  trailsConfirmation.removeAttribute("hidden");
+}
+
+// Name and date come from the server response, not from the form.
+function showConfirmation(booking) {
+  const data = new FormData(bookingForm);
+  const duration = data.get("duration");
+  renderConfirmation([
+    ["Name", booking.name],
+    ["Date", booking.date],
+    ["Digital nomad", data.get("digital_nomad") === "yes" ? "Yes" : "No"],
+    ["Duration", duration === "daily" ? "Daily" : "Monthly"],
+    ["Total", formatRM(calculateTotal(duration))],
+  ]);
+}
+
+function showError(message) {
+  const paragraph = document.createElement("p");
+  paragraph.textContent = message;
+  trailsConfirmation.replaceChildren(paragraph);
   trailsConfirmation.removeAttribute("hidden");
 }
 
@@ -92,7 +101,31 @@ bookingForm.addEventListener("input", function () {
   trailsConfirmation.setAttribute("hidden", "");
 });
 
-bookingForm.addEventListener("submit", function (e) {
+bookingForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-  showConfirmation();
+
+  const button = bookingForm.querySelector('button[type="submit"]');
+  button.disabled = true;
+
+  try {
+    const response = await fetch(bookingForm.action, {
+      method: "POST",
+      body: new FormData(bookingForm),
+      headers: { "X-Requested-With": "XMLHttpRequest" },
+      credentials: "same-origin",
+    });
+
+    const payload = await response.json();
+
+    if (!response.ok || !payload.success) {
+      const message = payload.data && payload.data.message;
+      throw new Error(message || "Booking failed. Please try again.");
+    }
+
+    showConfirmation(payload.data.booking);
+  } catch (error) {
+    showError(error.message || "Booking failed. Please try again.");
+  } finally {
+    button.disabled = false;
+  }
 });

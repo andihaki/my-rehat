@@ -81,7 +81,13 @@ get_header();
 
   <section class="trails-booking">
     <h2><?php echo esc_html( myrehat_test_booking_title() ); ?></h2>
-    <form id="booking-form">
+    <?php
+    // Shows the result of a no-JavaScript submit after the PRG redirect.
+    $booking_status = isset( $_GET['booking'] ) ? sanitize_key( wp_unslash( $_GET['booking'] ) ) : '';
+    ?>
+    <form id="booking-form" method="post">
+      <?php wp_nonce_field( 'myrehat_booking', 'myrehat_booking_nonce' ); ?>
+      <input type="hidden" name="trails_booking" value="1">
       <label>Name <input type="text" name="name" required></label>
       <label>Date <input type="date" name="date" required></label>
       <fieldset class="trails-field-group">
@@ -97,7 +103,13 @@ get_header();
       <p id="trails-total">Total: -</p>
       <button type="submit">Request booking</button>
     </form>
-    <div id="trails-confirmation" hidden></div>
+    <div id="trails-confirmation" aria-live="polite"<?php echo in_array( $booking_status, array( 'ok', 'invalid' ), true ) ? '' : ' hidden'; ?>>
+      <?php if ( 'ok' === $booking_status ) : ?>
+        <p><?php esc_html_e( 'Booking request received. We will be in touch shortly.', 'myrehat-test' ); ?></p>
+      <?php elseif ( 'invalid' === $booking_status ) : ?>
+        <p><?php esc_html_e( 'Something was wrong with your details. Please check them and try again.', 'myrehat-test' ); ?></p>
+      <?php endif; ?>
+    </div>
   </section>
 </main>
 
